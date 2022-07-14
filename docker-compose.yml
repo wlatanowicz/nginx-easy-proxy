@@ -1,0 +1,10 @@
+version: '3'
+services:
+  ngninx-proxy:
+    build:
+      context: .
+    ports:
+      - 8088:80
+    environment:
+      - LOCATION[web]=/
+      - BACKEND[web]=https://wiktor.latanowicz.com

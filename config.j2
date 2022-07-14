@@ -1,0 +1,13 @@
+server {
+    listen       80;
+    server_name  _;
+
+{% for service in services %}
+    # service {{ service.name }}
+    location {{ service.location }} {
+      proxy_ssl_server_name on;
+      proxy_pass {{ service.backend }};
+    }
+{% endfor %}
+
+}
